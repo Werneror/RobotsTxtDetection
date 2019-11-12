@@ -81,14 +81,16 @@ function judgeExist(path, status) {
 function changePageAction(url, tabId) {
 	var info = urlCache[url];
 	var title = chrome.i18n.getMessage('extensionName');
+	var flag = false;
 	existCache[url] = {};
 	for (var path in info) {
 		if (judgeExist(path, info[path]['status'])) {
 			title += '\n' + info[path]['status'] + '  ' + path;
 			existCache[url][path] = info[path];
+			flag = true;
 		}
 	}
-	if (title != 'robots.txt Detection') {
+	if (flag) {
 		chrome.pageAction.show(tabId);
 	    chrome.pageAction.setTitle({
 	    	tabId: tabId,

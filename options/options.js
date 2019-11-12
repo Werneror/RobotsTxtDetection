@@ -1,5 +1,5 @@
 function prompt(title, color) {
-  document.querySelector("#prompt").innerHTML = title;
+  document.querySelector("#prompt").innerText = title;
   document.querySelector("#prompt").style.color = color;
   document.querySelector("#prompt").style.display = "inline";
   setTimeout(function () {

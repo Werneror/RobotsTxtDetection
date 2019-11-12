@@ -1,12 +1,25 @@
 function addPathInfo(path, info) {
+	var divNode = document.createElement("div");
+	var spanNode = document.createElement("span");
+	var aNode = document.createElement("a");
+
+	spanNode.innerText = info['status'];
+	spanNode.classList.add('status');
 	if (info['status'] > 199 && info['status'] < 300) {
-		var status_html = '<span class="status green">' + info['status'] + '</span>'
+		spanNode.classList.add('green');
 	} else {
-		var status_html = '<span class="status red">' + info['status'] + '</span>'
+		spanNode.classList.add('red');
 	}
-	var newNode = document.createElement("div");
-	newNode.innerHTML = status_html + '<a class="black" href="' + info['fullurl']  + '">' + path + '</a>';
-	document.querySelector("body").appendChild(newNode);
+
+	aNode.href = info['fullurl'];
+	aNode.innerText = path;
+	aNode.classList.add('black');
+	aNode.target = '_blank';
+
+	divNode.classList.add('path');
+	divNode.appendChild(spanNode);
+	divNode.appendChild(aNode);
+	document.querySelector("body").appendChild(divNode);
 }
 
 chrome.runtime.sendMessage('check', function(response) {

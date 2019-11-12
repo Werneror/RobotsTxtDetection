@@ -1,11 +1,15 @@
 body {
-	background: #fff;
-	margin: 10px 20px 12px 20px;
+  background: #fff;
+  margin: 5px 20px 7px 20px;
   overflow: hidden;
 }
 
 a, a:visited {
   color: black;
+}
+
+.path {
+	margin: 5px 0 5px 0;
 }
 
 .green {
