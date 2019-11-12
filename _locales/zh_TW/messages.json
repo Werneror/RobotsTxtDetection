@@ -1,0 +1,10 @@
+{
+    "extensionName":            { "message": "robots.txt 檢測" },
+    "extensionDescription":     { "message": "檢測網站是否存在robots.txt。" },
+    "saveSuccessfully":         { "message": "保存成功。" },
+    "statusCodeNotEmpty":       { "message": "狀態碼不能為空。建議填寫404等。" },
+    "statusCodeMustInteger":    { "message": "狀態碼必須為整數。" },
+    "savePrompt":               { "message": "保存" },
+    "pathPrompt":               { "message": "要檢測的路徑：" },
+    "codePrompt":               { "message": "判斷路徑不存在的HTTP狀態碼：" }
+}

@@ -1,0 +1,10 @@
+{
+    "extensionName":            { "message": "robots.txt Detection" },
+    "extensionDescription":     { "message": "Check whether a website has robots.txt." },
+    "saveSuccessfully":         { "message": "Save successfully." },
+    "statusCodeNotEmpty":       { "message": "Status code cannot be empty. You can fill in 404." },
+    "statusCodeMustInteger":    { "message": "Status code must be an integer." },
+    "savePrompt":               { "message": "Save" },
+    "pathPrompt":               { "message": "Path to be detected:" },
+    "codePrompt":               { "message": "Nonexistent status code:" }
+}

@@ -1,0 +1,10 @@
+{
+    "extensionName":            { "message": "robots.txt 检测" },
+    "extensionDescription":     { "message": "检测网站是否存在robots.txt。" },
+    "saveSuccessfully":         { "message": "保存成功。" },
+    "statusCodeNotEmpty":       { "message": "状态码不能为空。建议填写404等。" },
+    "statusCodeMustInteger":    { "message": "状态码必须为整数。" },
+    "savePrompt":               { "message": "保存" },
+    "pathPrompt":               { "message": "要检测的路径：" },
+    "codePrompt":               { "message": "判断路径不存在的HTTP状态码：" }
+}

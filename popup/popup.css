@@ -1,0 +1,21 @@
+body {
+	background: #fff;
+	margin: 10px 20px 12px 20px;
+  overflow: hidden;
+}
+
+a, a:visited {
+  color: black;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.status {
+  margin-right: 5px;
+}
