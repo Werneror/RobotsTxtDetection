@@ -7,22 +7,18 @@ var currentUrl = '';
 var currentTabId = 0;
 
 chrome.runtime.onInstalled.addListener(function (e) {
-  window.setTimeout(function () {
-    if (e.reason === "install") {
-      chrome.storage.local.get(["path", "code"], function(obj){
-	    if (!obj.path) {
-          chrome.storage.local.set({
-            path: ['/robots.txt']
-          }, function(){})
-	    }
-	    if (!obj.path) {
-          chrome.storage.local.set({
-            code: [404, 301, 302]
-          }, function(){})
-	    }
-      });
+  chrome.storage.local.get(["path", "code"], function(obj) {
+    if (!obj.path) {
+      chrome.storage.local.set({
+        path: ['/robots.txt']
+      }, function(){})
     }
-  }, 3000);
+    if (!obj.path) {
+      chrome.storage.local.set({
+        code: [404, 301, 302]
+      }, function(){})
+    }
+  });
 });
 
 chrome.tabs.onActivated.addListener(function (activeInfo) {
