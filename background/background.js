@@ -87,13 +87,20 @@ function changePageAction(url, tabId) {
 		}
 	}
 	if (flag) {
+		chrome.pageAction.setIcon({
+			tabId: tabId, path: "/icons/r-48.png"
+		});
 		chrome.pageAction.show(tabId);
-	    chrome.pageAction.setTitle({
-	    	tabId: tabId,
-	    	title: title
-	    });
+		chrome.pageAction.setTitle({
+			tabId: tabId,
+			title: title
+		});
 	} else {
 		chrome.pageAction.hide(tabId);
+		// Hide may not work in chrome, so set the gray Icon
+		chrome.pageAction.setIcon({
+			tabId: tabId, path: "/icons/r-48-gray.png"
+		});
 	}
 }
 
