@@ -1,6 +1,6 @@
-var urlCache = {};    // Caching of various path states under a URL
-var pathCache = {};    // Status cache for full URL
-var existCache = {};    // Cache of path states that exist under a URL
+var urlCache = {};	// Caching of various path states under a URL
+var pathCache = {};	// Status cache for full URL
+var existCache = {};	// Cache of path states that exist under a URL
 var pathList = [];
 var nonexistentCode = [];
 var currentUrl = '';
@@ -8,16 +8,16 @@ var currentTabId = 0;
 
 chrome.runtime.onInstalled.addListener(function (e) {
   chrome.storage.local.get(["path", "code"], function(obj) {
-    if (!obj.path) {
-      chrome.storage.local.set({
-        path: ['/robots.txt']
-      }, function(){})
-    }
-    if (!obj.path) {
-      chrome.storage.local.set({
-        code: [404, 301, 302]
-      }, function(){})
-    }
+	if (!obj.path) {
+	  chrome.storage.local.set({
+		path: ['/robots.txt']
+	  }, function(){})
+	}
+	if (!obj.path) {
+	  chrome.storage.local.set({
+		code: [404, 301, 302]
+	  }, function(){})
+	}
   });
 });
 
@@ -62,8 +62,8 @@ function judgeExist(path, status) {
 	var codeExist = true;
 	for (code of nonexistentCode) {
 		if (status == code) {
-	    	codeExist = false;
-	    }
+			codeExist = false;
+		}
 	}
 	var pathExist = false;
 	for (p of pathList) {
@@ -129,18 +129,26 @@ function checkPath(url, path, callback) {
 		callback(pathCache[queryUrl]);
 	} else {
 		var xhr = new XMLHttpRequest();
-	    xhr.open('GET', queryUrl, true);
-	    xhr.onreadystatechange = function() {
-	        if (xhr.readyState == XMLHttpRequest.DONE) {
-	        	pathCache[queryUrl] = xhr.status;
+		xhr.open('GET', queryUrl, true);
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == XMLHttpRequest.DONE) {
+				var status = xhr.status;
+				if (xhr.responseURL != queryUrl) {
+					if (nonexistentCode.includes(302)) {
+						status = 302;
+					} else if (nonexistentCode.includes(301)) {
+						status = 301;
+					}
+				}
+				pathCache[queryUrl] = status;
 				urlCache[url][path] = {
 					status: pathCache[queryUrl],
 					fullurl: queryUrl
 				}
-	        	callback(xhr.status);
-	        }
-	    }
-	    xhr.send();
+				callback(xhr.status);
+			}
+		}
+		xhr.send();
 	}
 }
 
